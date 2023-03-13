@@ -11,6 +11,7 @@ class TranslatorWindow(QMainWindow):
         self.timer_start = 0
         self.timer_end = 0
         self.code = "Code : "
+        self.translator_dict = {"a": ".-", "b": "-...", "c": "-.-.", "d": "-..", "e": ".", "f": "..-.", "g": "--.", "h": "....", "i": "..", "j": ".---", "k": "-.-", "l": ".-..", "m": "--", "n": "-.", "o": "---", "p": ".--.", "q": "--.-", "r": ".-.", "s": "...", "t": "-", "u": "..-", "v": "...-", "w": ".--", "x": "-..-", "y": "-.--", "z": "--.."}
 
 
     def calculate_time(self):
@@ -46,6 +47,15 @@ class TranslatorWindow(QMainWindow):
 
     def print_code(self):
         self.label.setText(self.code)
+
+    def translate_code(self, code):
+        code = code.split(" ")
+        translation = ""
+        for char in code:
+            translation += self.translator_dict[char]
+        return translation
+
+
 
     def initUI(self):
         self.setGeometry(200, 200, 300, 300)
